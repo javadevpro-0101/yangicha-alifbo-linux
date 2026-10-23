@@ -1,0 +1,1 @@
+"""YangiAlifbo IBus engine (Linux)."""

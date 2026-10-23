@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component>
+    <name>org.freedesktop.IBus.YangiAlifbo</name>
+    <description>YangiAlifbo — Uzbek new alphabet converter</description>
+    <exec>/usr/bin/python3 -m yangialifbo.main</exec>
+    <version>0.1.0</version>
+    <author>Bilolbek Yoldoshxojayev</author>
+    <license>MIT</license>
+    <homepage>https://github.com/BilolbekYoldoshxojayev/yangicha-alifbo</homepage>
+    <textdomain>yangialifbo</textdomain>
+    <engines>
+        <engine>
+            <name>yangialifbo</name>
+            <language>uz</language>
+            <license>MIT</license>
+            <author>Bilolbek Yoldoshxojayev</author>
+            <icon>yangialifbo</icon>
+            <layout>us</layout>
+            <longname>YangiAlifbo</longname>
+            <description>O‘zbek lotin alifbosini yangi alifbo (ş ç ö ğ) ga o‘giradi</description>
+            <rank>0</rank>
+        </engine>
+    </engines>
+</component>
