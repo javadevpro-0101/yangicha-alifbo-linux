@@ -1,0 +1,6 @@
+#!/bin/sh
+# Launcher started by ibus-daemon for the YangiAlifbo engine.
+# YANGIALIFBO_PYTHON overrides the interpreter (it must have python3-gi installed).
+PY="${YANGIALIFBO_PYTHON:-/usr/bin/python3}"
+cd /
+exec env PYTHONPATH=/usr/lib/yangialifbo "$PY" -m yangialifbo.main "$@"

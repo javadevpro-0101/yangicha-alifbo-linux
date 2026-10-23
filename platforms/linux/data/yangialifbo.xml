@@ -2,7 +2,7 @@
 <component>
     <name>org.freedesktop.IBus.YangiAlifbo</name>
     <description>YangiAlifbo — Uzbek new alphabet converter</description>
-    <exec>/usr/bin/python3 -m yangialifbo.main</exec>
+    <exec>/usr/libexec/yangialifbo/yangialifbo-ibus</exec>
     <version>0.1.0</version>
     <author>Bilolbek Yoldoshxojayev</author>
     <license>MIT</license>
