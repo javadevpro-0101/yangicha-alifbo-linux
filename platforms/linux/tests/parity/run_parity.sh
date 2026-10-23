@@ -11,8 +11,13 @@ trap 'rm -rf "$WORK"' EXIT
 mkdir -p "$WORK/core" "$WORK/data"
 cp "$REPO"/src/Core/UzbekPhonetics.cs "$REPO"/src/Core/LanguageDetector.cs "$REPO"/src/Core/ChatNormalizer.cs "$WORK/core/"
 cp "$REPO"/platforms/linux/yangialifbo/data/*.txt "$WORK/data/"
-cp "$HERE/harness.csproj" "$HERE/Program.cs" "$WORK/"
+cp "$REPO"/src/Core/TextConverter.cs "$WORK/core/"
+cp "$HERE/harness.csproj" "$HERE/Program.cs" "$HERE/Stub.cs" "$WORK/"
 
 "$PY" "$HERE/gen_words.py" "$WORK/words.txt"
 (cd "$WORK" && dotnet run -c Release --project harness.csproj -- "$WORK/words.txt" "$WORK/oracle.tsv")
 "$PY" "$HERE/compare.py" "$WORK/words.txt" "$WORK/oracle.tsv"
+
+"$PY" "$HERE/gen_text.py" "$WORK/lines.txt"
+(cd "$WORK" && dotnet run -c Release --project harness.csproj -- "$WORK/lines.txt" "$WORK/text_oracle.tsv" text)
+"$PY" "$HERE/compare_text.py" "$WORK/lines.txt" "$WORK/text_oracle.tsv"

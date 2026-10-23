@@ -10,6 +10,7 @@
   <ItemGroup>
     <Compile Include="core/*.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Stub.cs" />
     <EmbeddedResource Include="data/english_reject.txt" LogicalName="english_reject.txt" />
     <EmbeddedResource Include="data/uzbek_words.txt" LogicalName="uzbek_words.txt" />
   </ItemGroup>

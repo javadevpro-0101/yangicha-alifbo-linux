@@ -7,7 +7,7 @@ set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 LINUX="$(cd "$HERE/../.." && pwd)"
 REPO="$(cd "$LINUX/../.." && pwd)"
-VERSION="${VERSION:-0.1.2}"
+VERSION="${VERSION:-0.1.3}"
 OUT="${OUT:-$HERE/dist}"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
@@ -24,6 +24,7 @@ cp -r "$LINUX/yangialifbo" "$PKG/usr/lib/yangialifbo/"
 find "$PKG/usr/lib/yangialifbo" -name __pycache__ -type d -prune -exec rm -rf {} +
 
 install -m755 "$HERE/yangialifbo-ibus" "$PKG/usr/libexec/yangialifbo/yangialifbo-ibus"
+install -Dm755 "$HERE/yangialifbo-convert" "$PKG/usr/bin/yangialifbo-convert"
 install -m644 "$LINUX/data/yangialifbo.xml" "$PKG/usr/share/ibus/component/yangialifbo.xml"
 install -m644 "$REPO/LICENSE" "$PKG/usr/share/doc/yangialifbo/copyright"
 
@@ -33,7 +34,7 @@ Version: ${VERSION}
 Section: utils
 Priority: optional
 Architecture: all
-Depends: ibus, python3, python3-gi, gir1.2-ibus-1.0
+Depends: ibus, python3, python3-gi, gir1.2-ibus-1.0, xclip, xdotool
 Maintainer: Bilolbek Yoldoshxojayev <javadevpro.0101@gmail.com>
 Homepage: https://github.com/BilolbekYoldoshxojayev/yangicha-alifbo
 Description: Uzbek input method for the new Latin alphabet (IBus)

@@ -1,0 +1,4 @@
+#!/bin/sh
+# yangialifbo-convert: convert the selected text (any app). See convert_selection.py.
+PY="${YANGIALIFBO_PYTHON:-/usr/bin/python3}"
+exec env PYTHONPATH=/usr/lib/yangialifbo "$PY" -m yangialifbo.convert_selection "$@"
