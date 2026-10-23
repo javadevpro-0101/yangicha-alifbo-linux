@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YangiAlifbo — Linux (IBus)</title>
+<meta name="description" content="YangiAlifbo — Linux uchun IBus kiritish usuli. Lotin o‘zbekchada yozing, sh→ş, ch→ç, o‘→ö, g‘→ğ o‘zi qo‘yiladi.">
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; max-width: 760px;
+         margin: 0 auto; padding: 24px 18px 48px; line-height: 1.6; }
+  h1 { margin-bottom: 4px; }
+  .lead { font-size: 1.1rem; margin-top: 0; }
+  .card { border: 1px solid #8884; border-radius: 10px; padding: 18px; margin: 20px 0; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 8px; background: #13205c;
+         color: #fff; text-decoration: none; font-weight: 600; }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
+  pre { background: #8881; padding: 12px; border-radius: 8px; overflow-x: auto; }
+  table td { padding: 2px 12px 2px 0; vertical-align: top; }
+  .muted { opacity: 0.75; font-size: 0.92rem; }
+</style>
+</head>
+<body>
+
+<h1>YangiAlifbo — Linux</h1>
+<p class="lead">O‘zbekcha lotin yozuvida eski imloda yozing, so‘z tugaganda sh, ch, o‘, g‘ yangi alifbodagi ş, ç, ö, ğ harflariga o‘zi o‘giriladi.</p>
+
+<div class="card">
+  <p><strong>Versiya 0.1.2</strong> · Debian / Ubuntu / Kali (.deb) · Arxitektura: all · Litsenziya: MIT</p>
+  <p><a class="btn" href="downloads/yangialifbo_0.1.2_all.deb">Yuklab olish (.deb)</a></p>
+  <p class="muted">SHA-256: <code>72da2966c54f76297df1c987969754fa790ce1c66cfcdc18f0c5b323905cba74</code></p>
+</div>
+
+<h2>O‘rnatish</h2>
+<ol>
+  <li>Faylni yuklab oling.</li>
+  <li>Terminalda o‘rnating:
+<pre>sudo apt install ./yangialifbo_0.1.2_all.deb
+ibus restart</pre>
+  </li>
+  <li>Sozlamalar → Klaviatura → Kiritish manbalari → <strong>+</strong> → O‘zbek → <strong>YangiAlifbo</strong>.</li>
+  <li>IBus'ning odatiy tugmasi bilan YangiAlifbo'ga o‘ting va yozing.</li>
+</ol>
+
+<h2>Misol</h2>
+<pre>shahar salom o'rtoq chiroyli
+→ şahar salom örtoq çiroyli</pre>
+
+<h2>Nimalarni bilish kerak</h2>
+<ul>
+  <li>Hozircha <strong>X11</strong> sessiyada sinalgan. Wayland'da to‘liq sinalmagan.</li>
+  <li>Parol maydonlarida hech narsa o‘zgarmaydi.</li>
+  <li>Terminal va IDE'larni chetlab o‘tish hali yo‘q.</li>
+  <li>Kali Linux'da o‘rnatish sinovi hali o‘tkazilmagan — muammo bo‘lsa, xabar bering.</li>
+</ul>
+
+<h2>Xato haqida xabar</h2>
+<p>
+  <a href="https://github.com/javadevpro-0101/yangicha-alifbo-linux/issues/new">GitHub Issues</a> ·
+  <a href="https://github.com/javadevpro-0101/yangicha-alifbo-linux">Manba kodi</a>
+</p>
+<p class="muted">Manba: <code>platforms/linux/</code>. Qoidalar Windows versiyasi bilan solishtirilgan (30 000+ holat, 0 farq).</p>
+
+</body>
+</html>
