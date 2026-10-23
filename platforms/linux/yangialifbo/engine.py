@@ -1,13 +1,15 @@
 # ──────────────────────────────────────────────────────────────────────
 # YangiAlifbo — IBus engine (Linux)
 #
-# Milestone 1: keystroke buffering and word replacement mechanics only.
-# convert_word() is an identity function until the Uzbek rules are
-# ported from src/Core/ (UzbekPhonetics, LanguageDetector, ChatNormalizer).
+# Typed letters are buffered per word. When a delimiter arrives, the word
+# is checked with the same rules as the Windows hook (core/convert.py).
+# If it converts, the typed word is erased and the new one is committed.
 #
 # Privacy: typed text is kept in memory only for the current word and is
 # never logged, stored or sent anywhere.
 # ──────────────────────────────────────────────────────────────────────
+
+from pathlib import Path
 
 import gi
 
@@ -38,9 +40,24 @@ MOD1_MASK = IBus.ModifierType.MOD1_MASK  # Alt
 SUPER_MASK = IBus.ModifierType.SUPER_MASK
 
 
-def convert_word(word: str) -> str:
-    """Placeholder. Returns the word unchanged until the rules are ported."""
-    return word
+from .core.convert import try_convert_word  # noqa: E402
+from .core.detector import STRICT, LanguageDetector  # noqa: E402
+
+DATA_DIR = Path(__file__).parent / "data"
+
+_detector = None
+
+
+def _get_detector():
+    global _detector
+    if _detector is None:
+        _detector = LanguageDetector.from_data_dir(DATA_DIR)
+    return _detector
+
+
+def convert_word(word: str):
+    """Return the converted word, or None if it must be left unchanged."""
+    return try_convert_word(word, _get_detector(), mode=STRICT, chat_slang=True)
 
 
 class YangiAlifboEngine(IBus.Engine):
@@ -115,7 +132,7 @@ class YangiAlifboEngine(IBus.Engine):
             return
 
         converted = convert_word(word)
-        if converted == word:
+        if converted is None or converted == word:
             return
 
         # Erase the typed word, then write the converted one.
